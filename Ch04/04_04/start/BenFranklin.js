@@ -1,13 +1,7 @@
-var EventEmitter = require('events').EventEmitter;
-var util = require('util');
-
-var Person = function(name) {
-	this.name = name;
-};
-
-util.inherits(Person, EventEmitter);
+var Person = require('./lib/Person');
 
 var ben = new Person("Ben Franklin");
+var josemy = new Person("Josmey");
 
 ben.on('speak', function(said) {
 
@@ -15,5 +9,10 @@ ben.on('speak', function(said) {
 
 });
 
+josemy.on('speak', function(said) {
+	console.log(`${this.name} -> ${said}`);
+});
+
 
 ben.emit('speak', "You may delay, but time will not.");
+josemy.emit('speak', 'hola que ase');
